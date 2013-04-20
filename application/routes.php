@@ -33,10 +33,14 @@
 */
 Route::controller(Controller::detect());
 
-Route::get('/', function()
-{
-	return View::make('home.index');
-});
+Route::group(array('before' => 'auth'), function()
+	{
+		Route::get('/', function()
+		{
+			return View::make('home.index');
+		});
+	});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -109,5 +113,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) return Redirect::to_action('auth@login');
 });

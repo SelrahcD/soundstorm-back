@@ -1,4 +1,5 @@
 <?php
+
 class Auth_Controller extends Base_Controller {
 
 	private $client;

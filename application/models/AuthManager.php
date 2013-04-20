@@ -16,10 +16,9 @@ class AuthManager {
 
 	public function user()
 	{
-		var_dump($this->userId);
-		// if ( ! is_null($this->user)) return $this->user;
+		if ( ! is_null($this->user)) return $this->user;
 
-		// return $this->user = $this->retrieve($this->token);
+		return $this->user = $this->retrieve($this->userId);
 	}
 	
 	public function login($userId)
@@ -44,6 +43,13 @@ class AuthManager {
 	public function check()
 	{
 		return ! is_null($this->user());
+	}
+
+	protected function retrieve($userId)
+	{
+		$userRepository = IoC::resolve('userRepository');
+
+		return $userRepository->getUserById($userId);
 	}
 
 	protected function token()

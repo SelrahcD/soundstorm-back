@@ -1,6 +1,11 @@
 <?php
 
 class UserRepository {
+
+	public function getUserById($userId)
+	{
+		return User::find($userId);
+	}
 	
 	public function getUserBySoundcloudId($soundcloudId)
 	{

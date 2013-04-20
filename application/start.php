@@ -172,3 +172,5 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
 {
 	Session::load();
 }
+
+require_once 'bindings.php';

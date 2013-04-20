@@ -10,17 +10,17 @@ class Auth_Controller extends Base_Controller {
 		$this->client = new Services_Soundcloud(
 			Config::get('soundcloud.client_id'),
 			Config::get('soundcloud.client_secret'),
-			URL::to_action('auth@step2'));
+			URL::to_action('auth@callback'));
 
 		parent::__construct();
 	}
 
-	public function get_step1()
+	public function get_login()
 	{
 		return Redirect::to($this->client->getAuthorizeUrl());
 	}
 
-	public function get_step2()
+	public function get_callback()
 	{
 
 		$accessToken = $this->client->accessToken(Input::get('code'));

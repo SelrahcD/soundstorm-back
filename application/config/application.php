@@ -152,7 +152,7 @@ return array(
 	*/
 
 	'aliases' => array(
-		'Auth'       	=> 'Laravel\\Auth',
+		// 'Auth'       	=> 'Laravel\\Auth',
 		'Authenticator' => 'Laravel\\Auth\\Drivers\\Driver',
 		'Asset'      	=> 'Laravel\\Asset',
 		'Autoloader' 	=> 'Laravel\\Autoloader',

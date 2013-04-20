@@ -1,7 +1,7 @@
 <?php
 
-class Library extends Eloquent {
+class Library extends Aware {
 	
 	public static $table = 'libraries';
-	
+
 }

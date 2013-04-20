@@ -9,3 +9,8 @@ Ioc::singleton('libraryRepository', function()
 {
 	return new LibraryRepository;
 });
+
+Ioc::singleton('trackRepository', function()
+{
+	return new TrackRepository;
+});

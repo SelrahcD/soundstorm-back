@@ -17,6 +17,12 @@ class Auth_Controller extends Base_Controller {
 
 	public function get_login()
 	{
+		return View::make('auth.login')
+		->with('soundcloud_login_url', $this->client->getAuthorizeUrl());
+	}
+
+	public function get_souncloud()
+	{
 		return Redirect::to($this->client->getAuthorizeUrl());
 	}
 

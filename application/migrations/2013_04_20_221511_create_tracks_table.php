@@ -11,7 +11,7 @@ class Create_Tracks_Table {
 	{
 		Schema::create('tracks', function ($table)
 		{
-			$table->increment('id');
+			$table->increments('id');
 			$table->integer('library_id');
 			$table->integer('soundclound_id');
 			$table->string('title');

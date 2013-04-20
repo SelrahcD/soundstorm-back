@@ -55,5 +55,18 @@ class Library_Controller extends Base_Controller {
 
 		return Response::json($library->to_array());
 	}
+
+	public function delete_destroy($libraryId)
+	{
+		if(!($library = $this->libraryRepository->getById($libraryId)))
+		{
+			return Response::error('404');
+		}
+
+		$this->libraryRepository->delete($library);
+
+		return Response::make(null, 204);
+
+	}
 	
 }

@@ -19,4 +19,9 @@ class LibraryRepository {
 	{
 		return $library->save();
 	}
+
+	public function delete(Library $library)
+	{
+		return $library->delete();
+	}
 }

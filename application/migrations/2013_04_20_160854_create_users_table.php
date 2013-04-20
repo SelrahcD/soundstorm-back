@@ -14,6 +14,7 @@ class Create_Users_Table {
 			    $table->increments('id');
 			    $table->string('username');
 			    $table->string('soundcloud_id');
+			    $table->timestamps();
 			});
 	}
 

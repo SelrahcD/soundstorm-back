@@ -1,34 +1,44 @@
 <?php
 class Auth_Controller extends Base_Controller {
 
+	private $client;
+
 	public $restful = true;
 
-	public function get_step1()
+	public function __construct()
 	{
-		$client = new Services_Soundcloud(
+		$this->client = new Services_Soundcloud(
 			Config::get('soundcloud.client_id'),
 			Config::get('soundcloud.client_secret'),
 			URL::to_action('auth@step2'));
 
-		return Redirect::to($client->getAuthorizeUrl());
+		parent::__construct();
+	}
+
+	public function get_step1()
+	{
+		return Redirect::to($this->client->getAuthorizeUrl());
 	}
 
 	public function get_step2()
 	{
-		$client = new Services_Soundcloud(
-			Config::get('soundcloud.client_id'),
-			Config::get('soundcloud.client_secret'),
-			URL::to_action('auth@step2'));
 
-		$accessToken = $client->accessToken(Input::get('code'));
+		$accessToken = $this->client->accessToken(Input::get('code'));
 
-		// Si utilisateur existant
-		// Sinon on créer un user
-		$client->setAccessToken($accessToken['access_token']);
+		$this->client->setAccessToken($accessToken['access_token']);
 
-		$current_user = json_decode($client->get('me'));
+		$soundcloudUser = json_decode($this->client->get('me'));
 
-		Auth::login(1);
+		$userRepository = new UserRepository;
+
+		if(!($user = $userRepository->getUserBySoundcloudId($soundcloudUser->id)))
+		{
+			$user = $userRepository->createUser($soundcloudUser);
+		}
+
+		Auth::login($user->id);
+
+		return Redirect::home();
 	}
 
 	public function get_logout()

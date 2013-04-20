@@ -29,7 +29,7 @@ class Auth_Controller extends Base_Controller {
 
 		$soundcloudUser = json_decode($this->client->get('me'));
 
-		$userRepository = new UserRepository;
+		$userRepository = IoC::resolve('userRepository');
 
 		if(!($user = $userRepository->getUserBySoundcloudId($soundcloudUser->id)))
 		{

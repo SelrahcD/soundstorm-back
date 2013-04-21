@@ -24,7 +24,7 @@ class Create_Library_Table {
 	 */
 	public function down()
 	{
-		Schema::drop('library');
+		Schema::drop('libraries');
 	}
 
 }

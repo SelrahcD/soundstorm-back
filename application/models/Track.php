@@ -6,6 +6,7 @@ class Track extends Aware {
 		'soundcloud_id',
 		'title',
 		'uri',
+		'volume',
 		);
 
 }

@@ -37,7 +37,7 @@ class Auth_Controller extends Base_Controller {
 
 		if(!($user = $userRepository->getUserBySoundcloudId($soundcloudUser->id)))
 		{
-			$user = $userRepository->createUser($soundcloudUser);
+			$user = $userRepository->createUser($soundcloudUser, $accessToken);
 		}
 
 		Auth::login($user->id);

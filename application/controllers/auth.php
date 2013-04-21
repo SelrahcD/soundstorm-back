@@ -8,10 +8,7 @@ class Auth_Controller extends Base_Controller {
 
 	public function __construct()
 	{
-		$this->client = new Services_Soundcloud(
-			Config::get('soundcloud.client_id'),
-			Config::get('soundcloud.client_secret'),
-			URL::to_action('auth@callback'));
+		$this->client = Ioc::resolve('soundcloudService');
 
 		parent::__construct();
 	}

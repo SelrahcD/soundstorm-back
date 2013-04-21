@@ -15,6 +15,23 @@ class Track_Controller extends Base_Controller {
 		$this->libraryRepository = Ioc::resolve('libraryRepository');
 	}
 
+	public function get_index($libraryId)
+	{
+		if(!($library = $this->libraryRepository->getById($libraryId)))
+		{
+			return Response::error('404');
+		}
+
+		$tracks = $library->tracks;
+		$tracksArray = array();
+		foreach($tracks as $track)
+		{
+			$tracksArray[] = $track->to_array();
+		}
+
+		return Response::json($tracksArray);
+	}
+
 	public function post_create($libraryId)
 	{
 		if(!($library = $this->libraryRepository->getById($libraryId)))

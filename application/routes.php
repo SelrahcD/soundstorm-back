@@ -38,6 +38,7 @@ Route::post('libraries', 'library@create');
 Route::post('libraries/(:num)/tracks', 'track@create');
 Route::get('libraries/(:num)/tracks', 'track@index');
 Route::put('tracks/(:num)', 'track@update');
+Route::get('songs', 'user@songs');
 
 
 

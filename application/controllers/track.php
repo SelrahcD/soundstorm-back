@@ -13,6 +13,8 @@ class Track_Controller extends Base_Controller {
 		$this->trackRepository = Ioc::resolve('trackRepository');
 
 		$this->libraryRepository = Ioc::resolve('libraryRepository');
+
+		parent::__construct();
 	}
 
 	public function get_index($libraryId)

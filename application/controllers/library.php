@@ -9,6 +9,8 @@ class Library_Controller extends Base_Controller {
 	public function __construct()
 	{
 		$this->libraryRepository = Ioc::resolve('libraryRepository');
+
+		parent::__construct();
 	}
 
 	public function get_show($libraryId)

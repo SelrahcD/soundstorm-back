@@ -7,7 +7,6 @@ class User extends Eloquent {
 		$this->soundcloud_token      = $data['access_token'];
 		$this->soundcloud_refresh    = $data['refresh_token'];
 		$this->soundcloud_expiration = time() + $data['expires_in'];
-		$this->save();
 	}
 
 	public function getSoundcloudToken()

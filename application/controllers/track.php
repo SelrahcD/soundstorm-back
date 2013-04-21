@@ -34,4 +34,24 @@ class Track_Controller extends Base_Controller {
 
 		return Response::json($track->to_array());
 	}
+
+	public function put_update($trackId)
+	{
+		if(!($track = $this->trackRepository->getById($trackId)))
+		{
+			return Response::error('404');
+		}
+
+		$this->trackRepository->fill($track, Input::json());
+
+		if(!$track->valid())
+		{
+			return Response::json(array(
+				'error' => $track->errors));
+		}
+
+		$this->trackRepository->store($track);
+
+		return Response::json($track->to_array());
+	}
 }

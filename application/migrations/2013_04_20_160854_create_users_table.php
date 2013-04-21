@@ -14,9 +14,9 @@ class Create_Users_Table {
 			    $table->increments('id');
 			    $table->string('username');
 			    $table->string('soundcloud_id');
-			    $table->string('souncloud_token');
-			    $table->string('souncloud_refresh');
-			    $table->integer('souncloud_expiration');
+			    $table->string('soundcloud_token');
+			    $table->string('soundcloud_refresh');
+			    $table->integer('soundcloud_expiration');
 			    $table->timestamps();
 			});
 	}

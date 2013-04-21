@@ -43,7 +43,7 @@ class Library_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 
-		$library->fill(Input::json());
+		$this->libraryRepository->fill($library, Input::json());
 
 		if(!$library->valid())
 		{

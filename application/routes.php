@@ -36,7 +36,9 @@ Route::controller(Controller::detect());
 Route::get('libraries/(:num)', 'library@show');
 Route::post('libraries', 'library@create');
 Route::post('libraries/(:num)/tracks', 'track@create');
+Route::get('libraries/(:num)/tracks', 'track@index');
 Route::put('tracks/(:num)', 'track@update');
+
 
 
 Route::group(array('before' => 'auth'), function()

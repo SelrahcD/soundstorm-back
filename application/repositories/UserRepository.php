@@ -12,14 +12,14 @@ class UserRepository {
 		return User::where('soundcloud_id', '=', $soundcloudId)->first();
 	}
 
-	public function createUser($soundcloudUser, $accessToken)
+	public function createUser($soundcloudUser, $tokenData)
 	{
 		$user = new User;
 		$user->username = $soundcloudUser->username;
 		$user->soundcloud_id = $soundcloudUser->id;
-		$user->soundcloud_token = $accessToken['access_token'];
-		$user->soundcloud_refresh = $accessToken['refresh_token'];
-		$user->soundcloud_expiration = time() + $accessToken['expires_in'];
+
+		$user->setTokenData($tokenData);
+
 		$user->save();
 
 		return $user;

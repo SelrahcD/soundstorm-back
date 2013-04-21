@@ -14,6 +14,18 @@ class LibraryRepository {
 
 		return $library;
 	}
+
+	public function fill(Track $track, $data)
+	{
+		if(is_object($data))
+		{
+			$data = get_object_vars($data);
+		}
+
+		$track->fill($data);
+
+		return $data;
+	}
 	
 	public function getById($libraryId)
 	{

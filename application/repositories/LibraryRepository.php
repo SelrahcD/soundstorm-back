@@ -2,8 +2,13 @@
 
 class LibraryRepository {
 
-	public function make($data = array())
+	public function make($data)
 	{
+		if(is_object($data))
+		{
+			$data = get_object_vars($data);
+		}
+
 		$library = new Library;
 		$library->user_id = Auth::user()->id;
 

@@ -13,7 +13,7 @@ class Create_Tracks_Table {
 		{
 			$table->increments('id');
 			$table->integer('library_id');
-			$table->integer('soundclound_id');
+			$table->integer('soundcloud_id');
 			$table->string('title');
 			$table->string('uri');
 			$table->timestamps();

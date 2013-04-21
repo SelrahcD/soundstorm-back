@@ -30,7 +30,7 @@ class Track_Controller extends Base_Controller {
 				'error' => $track->errors));
 		}
 
-		// $library->addTrack($track);
+		$library->addTrack($track);
 
 		return Response::json($track->to_array());
 	}

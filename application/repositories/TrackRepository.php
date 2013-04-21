@@ -8,14 +8,20 @@ class TrackRepository {
 		{
 			$data = get_object_vars($data);
 		}
-		
+
 		$track = new Track;
 		$track->fill($data);
+		
 		return $track;
 	}
 	
 	public function getById($trackId)
 	{
 		return Track::find($trackId);
+	}
+
+	public function store(Track $track)
+	{
+		return $track->save();
 	}
 }

@@ -16,6 +16,7 @@ class Create_Tracks_Table {
 			$table->integer('soundcloud_id');
 			$table->string('title');
 			$table->string('uri');
+			$table->text('volume');
 			$table->timestamps();
 		});
 	}
